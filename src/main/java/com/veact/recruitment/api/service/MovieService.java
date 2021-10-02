@@ -1,4 +1,10 @@
 package com.veact.recruitment.api.service;
 
-public class MovieService {
+
+import com.veact.recruitment.api.domain.Movie;
+
+public interface MovieService {
+
+    Movie getMovieByTitle(String title);
+
 }
