@@ -17,7 +17,7 @@ public class Movie {
     @Id @JsonIgnore
     public String _id;
 
-    @Indexed
+    @Indexed(unique = true)
     public String title;
 
     public Integer year;

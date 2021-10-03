@@ -7,10 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -41,6 +38,17 @@ public class MovieController {
     ){
         log.info("A user has requested for: {}.", title);
         Movie movie = movieService.getMovieByTitle(title);
+        return ResponseEntity.ok(movie);
+    }
+
+    @PostMapping(value = "/movie", produces = "application/json")
+    public ResponseEntity<Movie> getMovie(
+            @RequestBody
+            Movie movie
+    ){
+        String title = movie== null? "" : movie.getTitle();
+        log.info("Creating a movie: {}.", title);
+        movie = movieService.createMovie(movie);
         return ResponseEntity.ok(movie);
     }
 
