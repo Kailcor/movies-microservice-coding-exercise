@@ -25,4 +25,12 @@ public class BusinessExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
+    @ExceptionHandler(BadRequestBusinessException.class)
+    public ResponseEntity<ErrorResponse> getError(BadRequestBusinessException ex) {
+        ErrorResponse error = new ErrorResponse();
+        error.generateErrorFromException(ex);
+        log.error(ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
 }
