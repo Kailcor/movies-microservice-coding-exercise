@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "cdb302ac-1798-494c-9e64-551f138db16e",
+		"name": "Veact Movie Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET MOVIE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/movie/{{title}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movie",
+						"{{title}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET LIST MOVIE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1990",
+							"description": "Optional filter by year",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "3",
+							"description": "Optional parameter, default 10",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"description": "Default 0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST MOVIE Creation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"The Java Developer\",\r\n  \"year\": 1990,\r\n  \"genre\": \"Comedy\",\r\n  \"adult_content\": false,\r\n  \"description\": \"The best movie of all time. A Java Developer helps Veact to build a magic thing called microservices, for a incredible product\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/movie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST MOVIE Creation (Copy for creating a second one faster) ;)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"The Production Deploy\",\r\n  \"year\": 2021,\r\n  \"genre\": \"Thriller\",\r\n  \"adult_content\": true,\r\n  \"description\": \"The scariest movie in this world. Wait for the ending, you will not believe it!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/movie",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movie"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "title",
+			"value": "The Java Developer"
+		}
+	]
+}
