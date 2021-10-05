@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  mongo:
+    container_name: movie_database
+    ports:
+      - 27017:27017
+    image: mongo
+    restart: unless-stopped
+    volumes:
+      - /database:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
