@@ -6,6 +6,8 @@ import com.veact.recruitment.api.exception.BusinessException;
 import com.veact.recruitment.api.exception.NotFoundBusinessException;
 import com.veact.recruitment.api.repository.MovieRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -22,6 +24,12 @@ public class MovieServiceImpl implements MovieService
         repository = movieRepository;
     }
 
+    /**
+     * Return the movie that match the exact title (Case sensitive).
+     *
+     * @param title the title of the movie.
+     * @return Movie with that exact title.
+     */
     @Override
     public Movie getMovieByTitle(String title) {
         Movie movie = repository.findMovieByTitle(title);
@@ -31,6 +39,30 @@ public class MovieServiceImpl implements MovieService
         return movie;
     }
 
+    /**
+     * Return a list of movies. Optionally can be filtered by year.
+     * @param paging Pageable with page data (Size and Page number)
+     * @param year Year to filter the list. Can be null.
+     * @return list of movies.
+     */
+    @Override
+    public Page<Movie> getMovies(Pageable paging, Integer year) {
+
+        Page<Movie> pageMovies;
+        if (year == null)
+            pageMovies = repository.findAll(paging);
+        else
+            pageMovies = repository.findByYear(year, paging);
+
+
+        return pageMovies;
+    }
+
+    /**
+     * Create a movie.
+     * @param movie to be created.
+     * @return the movie created in the repository.
+     */
     @Override
     public Movie createMovie(Movie movie) {
 

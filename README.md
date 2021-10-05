@@ -34,9 +34,13 @@ The microservice itself would need:
     - Mongo Database
 
 
-### Instruction to run with docker:
+### Instruction to run the mongo with docker:
 
-  1.  TBD
+  1.  In the base directory run:
+      
+      ``docker-compose up``
+      
+      this will start a mongo for testing local. 
 
 ### Installation for developers
     
@@ -46,7 +50,7 @@ The microservice itself would need:
 
 ### Compilation 
 
-As any Spring Boot project it has an Maven Wrapper, so you can build it without maven
+As any Spring Boot project it has a Maven Wrapper, so you can build it without maven
     
     ./mvnw clean install
 
